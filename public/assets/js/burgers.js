@@ -1,4 +1,5 @@
 $(function () {
+    // when the change-consumed div is clicked it changes the consumed state of the burger
     $(".change-consumed").on("click", function (event) {
         var id = $(this).data("id");
         var newConsumed = $(this).data("newconsumed");
@@ -17,6 +18,7 @@ $(function () {
         })
     });
 
+    // when the submit button is clicked it adds the new burger
     $(".create-form").on("submit", function (event) {
         event.preventDefault();
 

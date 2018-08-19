@@ -1,5 +1,6 @@
 const connection = require("../config/connection.js");
 
+// Adds question marks based off array length
 function printQuestionMarks(num) {
     var arr = [];
   
@@ -34,6 +35,7 @@ function printQuestionMarks(num) {
 }
 
 var orm = {
+    // function to select all from table
     selectAll: function (tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, result) {
@@ -43,6 +45,7 @@ var orm = {
             cb(result);
         });
     },
+    // function to add columns to the table
     insertOne: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 
@@ -63,6 +66,8 @@ var orm = {
         })
 
     },
+
+    // update an an entry in the table
     updateOne: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 

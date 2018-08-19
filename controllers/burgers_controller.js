@@ -4,6 +4,7 @@ var router = express.Router();
 
 var burger = require("../models/burger.js");
 
+// route to get the all function from burger and renders it into index.handlebars and puts the hbsObject in as well
 router.get("/", function(req, res) {
     burger.all(function(data) {
         var hbsObject = {
@@ -14,12 +15,14 @@ router.get("/", function(req, res) {
     });
 });
 
+// route to let people see all of the JSON data if they go to /api/burgers
 router.get("/api/burgers", function (req, res) {
     burger.all(function(data) {
         res.json(data);
     });
 });
 
+// route to post a new burger into the database
 router.post("/api/burgers", function(req, res) {
     burger.create([
         "burger_name", "consumed"
@@ -30,6 +33,7 @@ router.post("/api/burgers", function(req, res) {
     });
 });
 
+// route to change the consumed status of a burger
 router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
 
